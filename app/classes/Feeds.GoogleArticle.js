@@ -149,7 +149,7 @@ Feeds.GoogleArticle = Class.create({
 		var params = {method:'post' ,  onSuccess: this.markAsReadSuccess.bind(this , callBack) , onFailure: this.markAsReadFailure.bind(this , callBack)};
 		params.requestHeaders = this.feed.manager.getRequestHeaders();
 		params.parameters = {'T':token , a: this.getUnreadTag() , async: 'true' , i: this.id , s:this.feed.id};
-		this.ajaxRequest = new Ajax.Request('http://www.google.com/reader/api/0/edit-tag?client=PalmPre' , params);
+		this.ajaxRequest = new Ajax.Request('https://www.google.com/reader/api/0/edit-tag?client=PalmPre' , params);
 		
 	},
 	
@@ -185,7 +185,7 @@ Feeds.GoogleArticle = Class.create({
 		var params = {method:'post' ,  onSuccess: this.markAsUnreadSuccess.bind(this , callBack) , onFailure: this.markAsUnreadFailure.bind(this , callBack)};
 		params.requestHeaders = this.feed.manager.getRequestHeaders();
 		params.parameters = {'T':token , a: "user/-/state/com.google/kept-unread" , async: 'true' , i: this.id , s: this.feed.id , r: this.getUnreadTag()};
-		this.ajaxRequest = new Ajax.Request('http://www.google.com/reader/api/0/edit-tag?client=PalmPre' , params);
+		this.ajaxRequest = new Ajax.Request('https://www.google.com/reader/api/0/edit-tag?client=PalmPre' , params);
 		
 	},
 	
@@ -221,7 +221,7 @@ Feeds.GoogleArticle = Class.create({
 		params.requestHeaders = this.feed.manager.getRequestHeaders();
 		params.parameters = {'T':token , a: this.getStarredTag() , async: 'true' , i: this.id , s:this.feed.id};
 		Mojo.Log.info('---paramsMarkAsStarred' , Object.toJSON(params.parameters));
-		this.ajaxRequest = new Ajax.Request('http://www.google.com/reader/api/0/edit-tag?client=PalmPre' , params);
+		this.ajaxRequest = new Ajax.Request('https://www.google.com/reader/api/0/edit-tag?client=PalmPre' , params);
 	},
 	
 	markAsStarredSuccess: function(callBack , t)
@@ -255,7 +255,7 @@ Feeds.GoogleArticle = Class.create({
 		var params = {method:'post' ,  onSuccess: this.unmarkAsStarredSuccess.bind(this , callBack) , onFailure: this.unmarkAsStarredFailure.bind(this , callBack)};
 		params.requestHeaders = this.feed.manager.getRequestHeaders();
 		params.parameters = {'T':token , r: this.getStarredTag() , async: 'true' , i: this.id , s:this.feed.id}; 
-		this.ajaxRequest = new Ajax.Request('http://www.google.com/reader/api/0/edit-tag?client=PalmPre' , params);
+		this.ajaxRequest = new Ajax.Request('https://www.google.com/reader/api/0/edit-tag?client=PalmPre' , params);
 	},
 	
 	unmarkAsStarredSuccess: function(callBack , t)

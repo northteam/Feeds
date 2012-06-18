@@ -119,7 +119,7 @@ Feeds.GoogleFolder = Class.create({
 			return;
 		}
 		
-		var baseURL = "http://www.google.com/reader/api/0/mark-all-as-read?client=PalmPre";
+		var baseURL = "https://www.google.com/reader/api/0/mark-all-as-read?client=PalmPre";
 		var params = {method: 'post' , onSuccess: this.markAllAsReadSuccess.bind(this , callBack) , onFailure: this.markAllAsReadFailure.bind(this , callBack)};
 		params.parameters = {
 			ts: Delicious.getTimeStamp(),

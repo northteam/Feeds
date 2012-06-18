@@ -94,7 +94,7 @@ Feeds.GoogleManager  = Class.create({
 		var params = {method: 'get' , onSuccess: this.getFeedsSuccess.bind(this , callBack) , onFailure: this.getFeedsFailure.bind(this , callBack)};
 		params.parameters = { output: 'json' , ck: Delicious.getTimeStamp() , client: "PalmPre" };
 		params.requestHeaders = this.getRequestHeaders();
-		this.ajaxRequest = new Ajax.Request('http://www.google.com/reader/api/0/subscription/list' , params);
+		this.ajaxRequest = new Ajax.Request('https://www.google.com/reader/api/0/subscription/list' , params);
 	},
 	
 	getFeedsSuccess: function(callBack , t)
@@ -136,10 +136,10 @@ Feeds.GoogleManager  = Class.create({
 		if (this.offlineMode) return window.setTimeout(callBack.bind({} , true) , 20);
 		
 		var params = {method: 'get' , onSuccess: this.updateUnreadCountSuccess.bind(this , callBack) , onFailure: this.updateUnreadCountFailure.bind(this , callBack)};
-		//http://www.google.com/reader/api/0/unread-count?allcomments=true&output=json&ck=1252818277109&client=scroll&hl=en
+		//https://www.google.com/reader/api/0/unread-count?allcomments=true&output=json&ck=1252818277109&client=scroll&hl=en
 		params.parameters = { allcomments: 'true' , output: 'json' , ck: Delicious.getTimeStamp() , client: "PalmPre" };
 		params.requestHeaders = this.getRequestHeaders();
-		this.ajaxRequest = new Ajax.Request('http://www.google.com/reader/api/0/unread-count' , params);
+		this.ajaxRequest = new Ajax.Request('https://www.google.com/reader/api/0/unread-count' , params);
 	},
 	
 	updateUnreadCountSuccess: function(callBack , t)
@@ -237,7 +237,7 @@ Feeds.GoogleManager  = Class.create({
 			
 			var params = {method:'get' , onSuccess: this.getEditTokenSuccess.bind(this , callBack) , onFailure: this.getEditTokenFailure.bind(this , callBack)};
 			params.requestHeaders = this.getRequestHeaders();
-			this.getTokenAjax = new Ajax.Request('http://www.google.com/reader/api/0/token' , params);
+			this.getTokenAjax = new Ajax.Request('https://www.google.com/reader/api/0/token' , params);
 		}
 		else
 		{
@@ -373,7 +373,7 @@ Feeds.GoogleManager  = Class.create({
 			return;
 		}
 		if (editToken === -1) return callBack(false);
-		var baseURL = "http://www.google.com/reader/api/0/mark-all-as-read?client=PalmPre";
+		var baseURL = "https://www.google.com/reader/api/0/mark-all-as-read?client=PalmPre";
 		var params = {method: 'post' , onSuccess: this.markAllAsReadSuccess.bind(this , callBack) , onFailure: this.markAllAsReadFailure.bind(this , callBack)};
 		params.parameters = {
 			ts: Delicious.getTimeStamp(),
@@ -424,7 +424,7 @@ Feeds.GoogleManager  = Class.create({
 		
 		if (editToken === -1) return callBack(false);
 		
-		var baseURL = "http://www.google.com/reader/api/0/subscription/quickadd?client=PalmPre";
+		var baseURL = "https://www.google.com/reader/api/0/subscription/quickadd?client=PalmPre";
 		var params = {method: 'post' , onSuccess: this.addFeedSuccess.bind(this , callBack) , onFailure: this.addFeedFailure.bind(this , callBack)};
 		params.parameters = {
 			quickadd: url ,
@@ -476,7 +476,7 @@ Feeds.GoogleManager  = Class.create({
 			return;
 		}
 		if (editToken === -1) return callBack(false);
-		var baseURL = "http://www.google.com/reader/api/0/subscription/edit?client=settings";
+		var baseURL = "https://www.google.com/reader/api/0/subscription/edit?client=settings";
 		var params = {method: 'post' , onSuccess: this.deleteFeedSuccess.bind(this , feed , callBack) , onFailure: this.deleteFeedFailure.bind(this , feed , callBack)};
 		params.parameters = {
 			ac: 'unsubscribe',
